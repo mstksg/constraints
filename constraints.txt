@@ -53,6 +53,13 @@ data Constraint :: BOX
 data Dict :: Constraint -> *
 Dict :: Dict a
 
+-- | From a <a>Dict</a>, takes a value in an environment where the instance
+--   witnessed by the <a>Dict</a> is in scope, and evaluates it.
+--   
+--   Essentially a deconstruction of a <a>Dict</a> into its
+--   continuation-style form.
+withDict :: Dict a -> (a => r) -> r
+
 -- | This is the type of entailment.
 --   
 --   <tt>a <a>:-</a> b</tt> is read as <tt>a</tt> "entails" <tt>b</tt>.
